@@ -7,15 +7,24 @@ export default function Signin() {
     const navigate = useNavigate();
     const [signupData, setSignupData] = useState({ email: '', password: '' });
     const [isValid, setIsvalid] = useState(false);
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setSignupData((signupData) => ({ ...signupData, [name]: value }));
-    };
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            navigate('/todo');
+        }
+    }, []);
+
     useEffect(() => {
         setIsvalid(
             signupData.email.includes('@') && signupData.password.length >= 8
         );
     }, [signupData]);
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setSignupData((signupData) => ({ ...signupData, [name]: value }));
+    };
 
     const handleClick = (e) => {
         e.preventDefault();
