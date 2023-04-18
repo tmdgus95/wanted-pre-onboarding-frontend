@@ -9,5 +9,20 @@ export default function Todolist() {
             navigate('/signin');
         }
     }, []);
-    return <div>Todolist</div>;
+    return (
+        <section>
+            <li>
+                <label>
+                    <input type='checkbox' />
+                    <span>TODO 1</span>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type='checkbox' />
+                    <span>TODO 2</span>
+                </label>
+            </li>
+        </section>
+    );
 }
