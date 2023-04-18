@@ -24,8 +24,8 @@ export default function Todolist() {
     }, []);
     console.log(todos);
     return (
-        <section>
-            <ul>
+        <section className='h-full min-h-0 flex flex-col'>
+            <ul className='flex-auto overflow-y-auto'>
                 {todos.map((todo) => (
                     <Todo key={todo.id} todo={todo} setTodos={setTodos} />
                 ))}

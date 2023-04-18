@@ -19,6 +19,8 @@ export default function Signin() {
         setIsvalid(
             signupData.email.includes('@') && signupData.password.length >= 8
         );
+        console.log(isValid);
+        console.log(signupData);
     }, [signupData]);
 
     const handleChange = (e) => {
@@ -52,6 +54,7 @@ export default function Signin() {
                     name='email'
                     id='email'
                     type='email'
+                    placeholder='이메일을 입력하세요.'
                     value={signupData.email}
                     onChange={handleChange}
                 />
@@ -64,11 +67,16 @@ export default function Signin() {
                     name='password'
                     id='password'
                     type='password'
+                    placeholder='비밀번호를 입력하세요.'
                     value={signupData.password}
                     onChange={handleChange}
                 />
                 <button
-                    className={`${ButtonStlye} ${isValid && 'bg-red-400'}`}
+                    className={`${
+                        isValid
+                            ? 'bg-red-400 p-2 rounded-lg mx-2 text-white'
+                            : 'bg-slate-400 p-2 rounded-lg mx-2'
+                    }`}
                     data-testid='signin-button'
                     onClick={handleClick}
                     disabled={!isValid}

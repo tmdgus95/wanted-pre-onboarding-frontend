@@ -25,13 +25,18 @@ export default function AddTodo({ setTodos }) {
         setTodo('');
     };
     return (
-        <form>
+        <form className='flex w-full p-4'>
             <input
                 data-testid='new-todo-input'
+                placeholder='AddTodo'
                 value={todo}
                 onChange={handleChange}
             />
-            <button data-testid='new-todo-add-button' onClick={handleClick}>
+            <button
+                className='text-2xl bg-amber-300 p-2'
+                data-testid='new-todo-add-button'
+                onClick={handleClick}
+            >
                 추가
             </button>
         </form>

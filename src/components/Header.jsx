@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 export const ButtonStlye = 'bg-slate-400 p-2 rounded-lg mx-2';
 export default function Header() {
     const navigate = useNavigate();
+    const token = localStorage.getItem('token');
     return (
         <div className='flex w-full px-4 justify-between items-center mt-4'>
             <div>
@@ -11,24 +12,32 @@ export default function Header() {
                 </p>
             </div>
             <div>
-                <button
-                    className={ButtonStlye}
-                    onClick={() => navigate('/signup')}
-                >
-                    회원가입
-                </button>
-                <button
-                    className={ButtonStlye}
-                    onClick={() => navigate('/signin')}
-                >
-                    로그인
-                </button>
-                <button
-                    className={ButtonStlye}
-                    onClick={() => navigate('/signout')}
-                >
-                    로그아웃
-                </button>
+                {token ? (
+                    <button
+                        className={ButtonStlye}
+                        onClick={() => {
+                            localStorage.removeItem('token');
+                            navigate('/signin');
+                        }}
+                    >
+                        로그아웃
+                    </button>
+                ) : (
+                    <>
+                        <button
+                            className={ButtonStlye}
+                            onClick={() => navigate('/signup')}
+                        >
+                            회원가입
+                        </button>
+                        <button
+                            className={ButtonStlye}
+                            onClick={() => navigate('/signin')}
+                        >
+                            로그인
+                        </button>
+                    </>
+                )}
             </div>
         </div>
     );

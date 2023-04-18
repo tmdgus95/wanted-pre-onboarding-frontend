@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Instance } from '../api/axios';
 
+const TodoBt = 'text-2xl bg-amber-300 p-2';
 export default function Todo({ todo: { todo, isCompleted, id }, setTodos }) {
     const [checked, setChecked] = useState(isCompleted);
     const [editTodo, setEditTodo] = useState('');
@@ -38,45 +39,58 @@ export default function Todo({ todo: { todo, isCompleted, id }, setTodos }) {
     return (
         <>
             {!editMode && (
-                <li>
+                <li className='flex justify-between items-center p-3 my-1'>
                     <label htmlFor=''>
                         <input
+                            className='w-5 h-5'
                             type='checkbox'
                             checked={checked}
                             onChange={() => setChecked((prev) => !prev)}
                         />
-                        {todo}
+                        <span className='text-2xl'>{todo}</span>
                     </label>
                     <button
                         data-testid='modify-button'
+                        className={TodoBt}
                         onClick={() => setEditMode(!editMode)}
                     >
                         수정
                     </button>
-                    <button data-testid='delete-button' onClick={handleDelete}>
+                    <button
+                        data-testid='delete-button'
+                        className={TodoBt}
+                        onClick={handleDelete}
+                    >
                         삭제
                     </button>
                 </li>
             )}
             {editMode && (
-                <li>
+                <li className='flex justify-between items-center p-3 my-1'>
                     <label htmlFor=''>
                         <input
+                            className='w-5 h-5 text-2xl'
                             type='checkbox'
                             checked={checked}
                             onChange={() => setChecked((prev) => !prev)}
                         />
                         <input
+                            className='h-5 text-2xl'
                             data-testid='modify-input'
                             type='text'
                             defaultValue={todo}
                             onChange={(e) => setEditTodo(e.target.value)}
                         />
                     </label>
-                    <button data-testid='submit-button' onClick={handleUpdate}>
+                    <button
+                        className={TodoBt}
+                        data-testid='submit-button'
+                        onClick={handleUpdate}
+                    >
                         제출
                     </button>
                     <button
+                        className={TodoBt}
                         data-testid='cancel-button'
                         onClick={() => setEditMode(!editMode)}
                     >
