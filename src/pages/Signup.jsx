@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
+import { Instance } from '../api/axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function Signup() {
+    const navigate = useNavigate();
     const [signupData, setSignupData] = useState({ email: '', password: '' });
     const [isValid, setIsvalid] = useState(false);
     const handleChange = (e) => {
@@ -12,8 +15,20 @@ export default function Signup() {
             signupData.email.includes('@') && signupData.password.length >= 8
         );
     }, [signupData]);
-    console.log(signupData);
-    const handleClick = () => {};
+
+    const handleClick = (e) => {
+        e.preventDefault();
+        const body = {
+            email: signupData.email,
+            password: signupData.password,
+        };
+        Instance.post('/auth/signup', body)
+            .then((res) => {
+                console.log(res);
+                navigate('/signin');
+            })
+            .catch(console.log);
+    };
     return (
         <section>
             <form>
