@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Instance } from '../api/axios';
 import { useNavigate } from 'react-router-dom';
+import { ButtonStlye } from '../components/Header';
 
 export default function Signup() {
     const navigate = useNavigate();
@@ -30,10 +31,13 @@ export default function Signup() {
             .catch(console.log);
     };
     return (
-        <section>
-            <form>
-                <label htmlFor='email'>이메일</label>
+        <section className='flex justify-center mt-10'>
+            <form className='flex flex-col items-center'>
+                <label className='mb-2' htmlFor='email'>
+                    이메일
+                </label>
                 <input
+                    className='mb-2'
                     data-testid='email-input'
                     name='email'
                     id='email'
@@ -41,8 +45,11 @@ export default function Signup() {
                     value={signupData.email}
                     onChange={handleChange}
                 />
-                <label htmlFor='password'>비밀번호</label>
+                <label className='mb-2' htmlFor='password'>
+                    비밀번호
+                </label>
                 <input
+                    className='mb-2'
                     data-testid='password-input'
                     name='password'
                     id='password'
@@ -51,6 +58,7 @@ export default function Signup() {
                     onChange={handleChange}
                 />
                 <button
+                    className={`${ButtonStlye} ${isValid && 'bg-red-400'}`}
                     data-testid='signup-button'
                     onClick={handleClick}
                     disabled={!isValid}

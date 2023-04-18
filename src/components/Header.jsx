@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-const ButtonStlye = 'bg-slate-400 p-2 rounded-lg mx-2';
+export const ButtonStlye = 'bg-slate-400 p-2 rounded-lg mx-2';
 export default function Header() {
     const navigate = useNavigate();
     return (
