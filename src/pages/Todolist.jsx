@@ -22,7 +22,7 @@ export default function Todolist() {
             setTodos(res.data);
         });
     }, []);
-    console.log(todos);
+    // console.log(todos);
     return (
         <section className='h-full min-h-0 flex flex-col'>
             <ul className='flex-auto overflow-y-auto'>

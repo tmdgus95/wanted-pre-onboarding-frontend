@@ -34,7 +34,7 @@ export default function Signup() {
         };
         Instance.post('/auth/signup', body)
             .then((res) => {
-                console.log(res);
+                // console.log(res);
                 navigate('/signin');
             })
             .catch(console.log);

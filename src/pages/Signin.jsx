@@ -19,8 +19,8 @@ export default function Signin() {
         setIsvalid(
             signupData.email.includes('@') && signupData.password.length >= 8
         );
-        console.log(isValid);
-        console.log(signupData);
+        // console.log(isValid);
+        //  console.log(signupData);
     }, [signupData]);
 
     const handleChange = (e) => {
@@ -36,7 +36,7 @@ export default function Signin() {
         };
         Instance.post('/auth/signin', body)
             .then((res) => {
-                console.log(res.data.access_token);
+                //console.log(res.data.access_token);
                 localStorage.setItem('token', res.data.access_token);
                 navigate('/todo');
             })
